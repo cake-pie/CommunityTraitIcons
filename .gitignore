@@ -1,0 +1,11 @@
+# IDE/project/solution settings
+*.userprefs
+*.csproj
+*.sln
+
+# build results and libs
+[Oo]bj/
+[Bb]in/
+[Ll]ib/
+[Bb]uild/
+[Oo]utput/

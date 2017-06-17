@@ -1,0 +1,7 @@
+* text=auto
+*.cfg text
+*.md text
+*.cs text diff=csharp
+
+*.dds binary
+*.png binary
