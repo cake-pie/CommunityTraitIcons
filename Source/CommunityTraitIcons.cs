@@ -39,7 +39,7 @@ namespace CommunityTraitIcons
 						}
 
 						string traitName = nodes[i].GetValue("name");
-						if (!esc.TraitNames.Contains(traitName))
+						if (!esc.TraitNames.Contains(traitName) && !traitName.Equals("Unknown"))
 						{
 							log("Unused Trait - " + traitName + " - load skipped");
 							continue;
@@ -95,11 +95,10 @@ namespace CommunityTraitIcons
 
 		public static KerbalTraitSetting getTrait(string traitName)
 		{
-			KerbalTraitSetting result;
-			if (traitSettings.TryGetValue(traitName, out result))
-				return result;
+			if (traitSettings.ContainsKey(traitName))
+				return traitSettings[traitName];
 			else
-				return null;
+				return traitSettings["Unknown"];
 		}
 
 	}
