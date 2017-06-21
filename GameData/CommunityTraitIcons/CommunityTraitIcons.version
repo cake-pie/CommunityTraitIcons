@@ -1,0 +1,31 @@
+{
+	"NAME":"Community Trait Icons",
+	"URL":"https://raw.githubusercontent.com/cake-pie/CommunityTraitIcons/master/GameData/CommunityTraitIcons/CommunityTraitIcons.version",
+	"DOWNLOAD":"https://github.com/cake-pie/CommunityTraitIcons/releases",
+	"GITHUB":{
+		"USERNAME":"cake-pie",
+		"REPOSITORY":"CommunityTraitIcons",
+		"ALLOW_PRE_RELEASE":false,
+	},
+	"VERSION":{
+		"MAJOR":0,
+		"MINOR":1,
+		"PATCH":0,
+		"BUILD":0
+	},
+	"KSP_VERSION":{
+		"MAJOR":1,
+		"MINOR":3,
+		"PATCH":0
+	},
+	"KSP_VERSION_MIN":{
+		"MAJOR":1,
+		"MINOR":3,
+		"PATCH":0
+	},
+	"KSP_VERSION_MAX":{
+		"MAJOR":1,
+		"MINOR":3,
+		"PATCH":8
+	}
+}
