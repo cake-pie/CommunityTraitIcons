@@ -48,8 +48,7 @@ namespace CommunityTraitIcons
 						Texture2D icon = GameDatabase.Instance.GetTexture(nodes[i].GetValue("icon"), false);
 						if (icon==null) {
 							log("Texture load failed: " + nodes[i].GetValue("icon"));
-							// TODO create substitute texture for cases of failure to load
-							icon = GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/questionIcon", false);
+							icon = GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/errorIcon", false);
 						}
 
 						var newTrait = new KerbalTraitSetting(

@@ -23,11 +23,12 @@ SOFTWARE.
 ---------------
 
 The stock trait type icons are from the [IonIcons library](http://ionicons.com/)
-- engineerIcon.dds
 - pilotIcon.dds
-- questionIcon.dds
+- engineerIcon.dds
 - scientistIcon.dds
 - touristIcon.dds
+- questionIcon.dds
+- errorIcon.dds
 
 Licensed under the MIT license (see above)
 
