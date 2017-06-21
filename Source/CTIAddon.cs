@@ -6,7 +6,7 @@ using Experience;
 namespace CommunityTraitIcons
 {
 	[KSPAddon(KSPAddon.Startup.SpaceCentre, true)]
-	public class CommunityTraitIcons : MonoBehaviour
+	public class CTIAddon : MonoBehaviour
 	{
 		private static bool loaded = false;
 		private static Dictionary<string, KerbalTraitSetting> traitSettings = new Dictionary<string, KerbalTraitSetting>();
