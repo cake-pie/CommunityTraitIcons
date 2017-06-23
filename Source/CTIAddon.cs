@@ -5,9 +5,11 @@ using Experience;
 
 namespace CommunityTraitIcons
 {
+	// CTIAddon runs once when game first loads into the main menu scene, reads trait icon settings from config file, and makes them available for lookup.
 	[KSPAddon(KSPAddon.Startup.MainMenu, true)]
 	public class CTIAddon : MonoBehaviour
 	{
+		// have the trait icon settings been loaded from file yet?
 		public static bool Loaded { get; private set; }
 
 		private static Dictionary<string, KerbalTraitSetting> traitSettings = new Dictionary<string, KerbalTraitSetting>();
@@ -17,6 +19,7 @@ namespace CommunityTraitIcons
 			Debug.Log(string.Format("[Community Trait Icons] " + s, m));
 		}
 
+		// reads trait icon settings from config file
 		private void Start()
 		{
 			if (!Loaded)
@@ -93,6 +96,7 @@ namespace CommunityTraitIcons
 			}
 		}
 
+		// lookup trait icon settings by trait name (ProtoCrewMember.experienceTrait.TypeName)
 		public static KerbalTraitSetting getTrait(string traitName)
 		{
 			if (!Loaded) return null;

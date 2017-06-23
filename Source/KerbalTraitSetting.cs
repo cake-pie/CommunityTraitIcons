@@ -19,24 +19,34 @@ namespace CommunityTraitIcons
 			Color = color;
 		}
 
+		#region Icon Generation
+		// Generate a Sprite of the icon for this trait. Note: not tinted with color.
 		public Sprite makeSprite()
 		{
 			if (Icon == null) return null;
 			return Sprite.Create(Icon, new Rect(0, 0, Icon.width, Icon.height), new Vector2(0.5f, 0.5f));
 		}
 
+		// Generate a KSP DialogGUIImage of the icon for this trait.
 		public DialogGUIImage makeDialogGUIImage(Vector2 s, Vector2 p)
 		{
 			if (Icon == null || Color == null) return null;
 			return new DialogGUIImage(s,p,Color,Icon);
 		}
 
+		// Generate a KSP DialogGUISprite of the icon for this trait.
 		public DialogGUISprite makeDialogGUISprite(Vector2 s, Vector2 p)
 		{
 			if (Icon == null || Color == null) return null;
 			return new DialogGUISprite(s,p,Color,makeSprite());
 		}
 
+		// Generate a GameObject with an Image component of the icon for this trait.
+		// Also comes with RectTransform and CanvasRenderer.
+		// After obtaining the GameObject, you will most likely likely want to:
+		//  - Set its parent: go.transform.SetParent(parent, false);
+		//  - Make it active: go.SetActive(true);
+		//  - Position it manually by manipulating its RectTransform, or automatically using Unity's auto layout system
 		public GameObject makeGameObject()
 		{
 			if (Icon == null || Color == null) return null;
@@ -50,5 +60,6 @@ namespace CommunityTraitIcons
 
 			return icon;
 		}
+		#endregion Icon Generation
 	}
 }
