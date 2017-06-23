@@ -5,7 +5,7 @@ using Experience;
 
 namespace CommunityTraitIcons
 {
-	[KSPAddon(KSPAddon.Startup.SpaceCentre, true)]
+	[KSPAddon(KSPAddon.Startup.MainMenu, true)]
 	public class CTIAddon : MonoBehaviour
 	{
 		private static bool loaded = false;
