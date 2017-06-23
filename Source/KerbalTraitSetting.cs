@@ -30,14 +30,14 @@ namespace CommunityTraitIcons
 		// Generate a KSP DialogGUIImage of the icon for this trait.
 		public DialogGUIImage makeDialogGUIImage(Vector2 s, Vector2 p)
 		{
-			if (Icon == null || Color == null) return null;
+			if (Icon == null) return null;
 			return new DialogGUIImage(s,p,Color,Icon);
 		}
 
 		// Generate a KSP DialogGUISprite of the icon for this trait.
 		public DialogGUISprite makeDialogGUISprite(Vector2 s, Vector2 p)
 		{
-			if (Icon == null || Color == null) return null;
+			if (Icon == null) return null;
 			return new DialogGUISprite(s,p,Color,makeSprite());
 		}
 
@@ -49,7 +49,7 @@ namespace CommunityTraitIcons
 		//  - Position it manually by manipulating its RectTransform, or automatically using Unity's auto layout system
 		public GameObject makeGameObject()
 		{
-			if (Icon == null || Color == null) return null;
+			if (Icon == null) return null;
 
 			GameObject icon = new GameObject("CrewTraitIcon", typeof(RectTransform), typeof(CanvasRenderer));
 			icon.layer = UILayer;
