@@ -8,7 +8,8 @@ namespace CommunityTraitIcons
 	[KSPAddon(KSPAddon.Startup.MainMenu, true)]
 	public class CTIAddon : MonoBehaviour
 	{
-		private static bool loaded = false;
+		public static bool Loaded { get; private set; }
+
 		private static Dictionary<string, KerbalTraitSetting> traitSettings = new Dictionary<string, KerbalTraitSetting>();
 
 		internal static void log(string s, params object[] m)
@@ -18,9 +19,9 @@ namespace CommunityTraitIcons
 
 		private void Start()
 		{
-			if (!loaded)
+			if (!Loaded)
 			{
-				loaded = true;
+				Loaded = true;
 
 				ExperienceSystemConfig esc = new ExperienceSystemConfig();
 				esc.LoadTraitConfigs();
@@ -94,6 +95,7 @@ namespace CommunityTraitIcons
 
 		public static KerbalTraitSetting getTrait(string traitName)
 		{
+			if (!Loaded) return null;
 			if (traitSettings.ContainsKey(traitName))
 				return traitSettings[traitName];
 			else
@@ -102,4 +104,3 @@ namespace CommunityTraitIcons
 
 	}
 }
-
