@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CommunityTraitIcons
 {
 	public class KerbalTraitSetting
 	{
+		private const int UILayer = 5;
+
 		public string Name { get; }
 		public Texture2D Icon { get; }
 		public Color Color { get; }
@@ -32,6 +35,20 @@ namespace CommunityTraitIcons
 		{
 			if (Icon == null || Color == null) return null;
 			return new DialogGUISprite(s,p,Color,makeSprite());
+		}
+
+		public GameObject makeGameObject()
+		{
+			if (Icon == null || Color == null) return null;
+
+			GameObject icon = new GameObject("CrewTraitIcon", typeof(RectTransform), typeof(CanvasRenderer));
+			icon.layer = UILayer;
+
+			Image i = icon.AddComponent<Image>();
+			i.color = Color;
+			i.sprite = makeSprite();
+
+			return icon;
 		}
 	}
 }
