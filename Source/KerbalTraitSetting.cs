@@ -50,15 +50,20 @@ namespace CommunityTraitIcons
 		public GameObject makeGameObject()
 		{
 			if (Icon == null) return null;
-
 			GameObject icon = new GameObject("CrewTraitIcon", typeof(RectTransform), typeof(CanvasRenderer));
 			icon.layer = UILayer;
-
-			Image i = icon.AddComponent<Image>();
-			i.color = Color;
-			i.sprite = makeSprite();
-
+			attachImage(icon);
 			return icon;
+		}
+
+		// Attach an Image component with the icon for this trait to an existing GameObject.
+		public bool attachImage(GameObject go)
+		{
+			if (Icon == null) return false;
+			Image i = go.AddComponent<Image>();
+			i.sprite = makeSprite();
+			i.color = Color;
+			return true;
 		}
 		#endregion Icon Generation
 	}

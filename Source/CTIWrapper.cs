@@ -91,6 +91,7 @@ namespace YourNamespace
 				_makeDialogGUIImage = KerbalTraitSettingType.GetMethod("makeDialogGUIImage", BindingFlags.Public | BindingFlags.Instance);
 				_makeDialogGUISprite = KerbalTraitSettingType.GetMethod("makeDialogGUISprite", BindingFlags.Public | BindingFlags.Instance);
 				_makeGameObject = KerbalTraitSettingType.GetMethod("makeGameObject", BindingFlags.Public | BindingFlags.Instance);
+				_attachImage = KerbalTraitSettingType.GetMethod("attachImage", BindingFlags.Public | BindingFlags.Instance);
 			}
 
 			private object _actualKerbalTraitSetting;
@@ -153,6 +154,14 @@ namespace YourNamespace
 			{
 				if (_makeGameObject == null) return null;
 				return (GameObject)_makeGameObject.Invoke(_actualKerbalTraitSetting, null);
+			}
+
+			private MethodInfo _attachImage;
+			public bool attachImage(GameObject go)
+			{
+				if (_attachImage == null) return null;
+				object[] paramArr = new object[] { go };
+				return (bool)_attachImage.Invoke(_actualKerbalTraitSetting, paramArr);
 			}
 		}
 
