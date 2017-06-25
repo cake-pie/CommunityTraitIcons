@@ -159,7 +159,7 @@ namespace YourNamespace
 			private MethodInfo _attachImage;
 			public bool attachImage(GameObject go)
 			{
-				if (_attachImage == null) return null;
+				if (_attachImage == null) return false;
 				object[] paramArr = new object[] { go };
 				return (bool)_attachImage.Invoke(_actualKerbalTraitSetting, paramArr);
 			}
