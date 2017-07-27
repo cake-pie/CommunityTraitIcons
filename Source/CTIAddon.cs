@@ -96,7 +96,7 @@ namespace CommunityTraitIcons
 			}
 		}
 
-		// lookup trait icon settings by trait name (ProtoCrewMember.experienceTrait.TypeName)
+		// lookup trait icon settings by trait name (protoCrew.experienceTrait.Config.Name)
 		public static KerbalTraitSetting getTrait(string traitName)
 		{
 			if (!Loaded) return null;
