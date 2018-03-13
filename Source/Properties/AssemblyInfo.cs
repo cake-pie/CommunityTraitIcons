@@ -10,5 +10,5 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
-[assembly: AssemblyVersion ("0.1.9.0")]
-[assembly: KSPAssembly("CommunityTraitIcons", 0, 1)]
+[assembly: AssemblyVersion ("1.0.0.0")]
+[assembly: KSPAssembly("CommunityTraitIcons", 1, 0)]
