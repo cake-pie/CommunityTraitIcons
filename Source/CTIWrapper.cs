@@ -117,11 +117,11 @@ namespace YourNamespace
 			}
 
 			private PropertyInfo _Color;
-			public Color? Color
+			public Color Color
 			{
 				get
 				{
-					if (_Color == null) return null;
+					if (_Color == null) return Color.white;
 					return (Color)_Color.GetValue(_actualKerbalTraitSetting, null);
 				}
 			}
