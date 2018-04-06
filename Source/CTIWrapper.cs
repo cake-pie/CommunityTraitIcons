@@ -167,7 +167,7 @@ namespace YourNamespace
 
 		private static void log(string s, params object[] m)
 		{
-			Debug.Log(string.Format("[CTIWrapper] " + s, m));
+			Debug.Log(string.Format("[" + typeof(CTIWrapper).Namespace + "|CTIWrapper] " + s, m));
 		}
 	}
 }
