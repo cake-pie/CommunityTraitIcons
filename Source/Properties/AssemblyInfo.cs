@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("CommunityTraitIcons")]
-[assembly: AssemblyCopyright ("Copyright ©  2015-2018")]
+[assembly: AssemblyCopyright ("Copyright ©  2015-2019")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
