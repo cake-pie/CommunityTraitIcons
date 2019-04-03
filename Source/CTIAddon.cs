@@ -20,7 +20,7 @@ namespace CommunityTraitIcons
 		}
 
 		// reads trait icon settings from config file
-		private void Start()
+		private void Awake()
 		{
 			if (!Loaded)
 			{
