@@ -26,8 +26,7 @@ namespace CommunityTraitIcons
 			{
 				Loaded = true;
 
-				ExperienceSystemConfig esc = new ExperienceSystemConfig();
-				esc.LoadTraitConfigs();
+				ExperienceSystemConfig esc = GameDatabase.Instance.ExperienceConfigs;
 
 				ConfigNode node = GameDatabase.Instance.GetConfigNode("CommunityTraitIcons/CommunityTraitIcons/CommunityTraitIcons");
 				if (node != null)
