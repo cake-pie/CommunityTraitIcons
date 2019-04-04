@@ -26,6 +26,10 @@ namespace CommunityTraitIcons
 				LoadIcons();
 				GameEvents.OnGameDatabaseLoaded.Add(LoadIcons);
 			}
+
+			// it's safe to self-destruct as soon as we're done
+			// this also disposes of any spurious instances (see: https://forum.kerbalspaceprogram.com/index.php?/topic/7542-x/&do=findComment&comment=3574980)
+			Destroy(gameObject);
 		}
 
 		// reads trait icon settings from config file
