@@ -19,68 +19,71 @@ namespace CommunityTraitIcons
 			Debug.Log(string.Format("[Community Trait Icons] " + s, m));
 		}
 
-		// reads trait icon settings from config file
 		private void Awake()
 		{
 			if (!Loaded)
+				LoadIcons();
+		}
+
+		// reads trait icon settings from config file
+		private void LoadIcons()
+		{
+			Loaded = true;
+
+			ExperienceSystemConfig esc = GameDatabase.Instance.ExperienceConfigs;
+
+			ConfigNode node = GameDatabase.Instance.GetConfigNode("CommunityTraitIcons/CommunityTraitIcons/CommunityTraitIcons");
+			if (node != null)
 			{
-				Loaded = true;
+				var nodes = node.GetNodes("Trait");
 
-				ExperienceSystemConfig esc = GameDatabase.Instance.ExperienceConfigs;
-
-				ConfigNode node = GameDatabase.Instance.GetConfigNode("CommunityTraitIcons/CommunityTraitIcons/CommunityTraitIcons");
-				if (node != null)
+				for (int i = 0; i < nodes.Length; i++)
 				{
-					var nodes = node.GetNodes("Trait");
-
-					for (int i = 0; i < nodes.Length; i++)
+					if (!nodes[i].HasValue("name") || !nodes[i].HasValue("icon") || !nodes[i].HasValue("color"))
 					{
-						if (!nodes[i].HasValue("name") || !nodes[i].HasValue("icon") || !nodes[i].HasValue("color"))
-						{
-							log("Invalid Trait node format - load failed - skipped");
-							continue;
-						}
+						log("Invalid Trait node format - load failed - skipped");
+						continue;
+					}
 
-						string traitName = nodes[i].GetValue("name");
-						if (!esc.TraitNames.Contains(traitName) && !traitName.Equals("Unknown"))
-						{
-							log("Unused Trait - " + traitName + " - load skipped");
-							continue;
-						}
+					string traitName = nodes[i].GetValue("name");
+					if (!esc.TraitNames.Contains(traitName) && !traitName.Equals("Unknown"))
+					{
+						log("Unused Trait - " + traitName + " - load skipped");
+						continue;
+					}
 
-						Texture2D icon = GameDatabase.Instance.GetTexture(nodes[i].GetValue("icon"), false);
-						if (icon==null) {
-							log("Texture load failed: " + nodes[i].GetValue("icon"));
-							icon = GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/errorIcon", false);
-						}
+					Texture2D icon = GameDatabase.Instance.GetTexture(nodes[i].GetValue("icon"), false);
+					if (icon==null) {
+						log("Texture load failed: " + nodes[i].GetValue("icon"));
+						icon = GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/errorIcon", false);
+					}
 
-						var newTrait = new KerbalTraitSetting(
-							traitName,
-							icon,
-							parseColor(nodes[i], "color", XKCDColors.White)
-						);
-						try
-						{
-							traitSettings.Add(traitName, newTrait);
-						}
-						catch (Exception ex)
-						{
-							log("Error: {0}", ex.Message);
-						}
+					var newTrait = new KerbalTraitSetting(
+						traitName,
+						icon,
+						parseColor(nodes[i], "color", XKCDColors.White)
+					);
+					try
+					{
+						traitSettings.Add(traitName, newTrait);
+					}
+					catch (Exception ex)
+					{
+						log("Error: {0}", ex.Message);
 					}
 				}
-				else
-				{
-					log("Could not find trait settings config - using defaults");
-					traitSettings.Add("Pilot", new KerbalTraitSetting("Pilot", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/pilotIcon", false), XKCDColors.PastelRed));
-					traitSettings.Add("Engineer", new KerbalTraitSetting("Engineer", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/engineerIcon", false), XKCDColors.DarkYellow));
-					traitSettings.Add("Scientist", new KerbalTraitSetting("Scientist", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/scientistIcon", false), XKCDColors.DirtyBlue));
-					traitSettings.Add("Tourist", new KerbalTraitSetting("Tourist", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/touristIcon", false), XKCDColors.SapGreen));
-				}
-
-				if (!traitSettings.ContainsKey("Unknown"))
-					traitSettings.Add("Unknown", new KerbalTraitSetting("Unknown", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/questionIcon", false), XKCDColors.White));
 			}
+			else
+			{
+				log("Could not find trait settings config - using defaults");
+				traitSettings.Add("Pilot", new KerbalTraitSetting("Pilot", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/pilotIcon", false), XKCDColors.PastelRed));
+				traitSettings.Add("Engineer", new KerbalTraitSetting("Engineer", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/engineerIcon", false), XKCDColors.DarkYellow));
+				traitSettings.Add("Scientist", new KerbalTraitSetting("Scientist", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/scientistIcon", false), XKCDColors.DirtyBlue));
+				traitSettings.Add("Tourist", new KerbalTraitSetting("Tourist", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/touristIcon", false), XKCDColors.SapGreen));
+			}
+
+			if (!traitSettings.ContainsKey("Unknown"))
+				traitSettings.Add("Unknown", new KerbalTraitSetting("Unknown", GameDatabase.Instance.GetTexture("CommunityTraitIcons/Icons/questionIcon", false), XKCDColors.White));
 		}
 
 		private Color parseColor(ConfigNode node, string name, Color c)
