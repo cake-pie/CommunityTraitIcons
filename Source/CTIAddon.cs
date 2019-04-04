@@ -22,7 +22,10 @@ namespace CommunityTraitIcons
 		private void Awake()
 		{
 			if (!Loaded)
+			{
 				LoadIcons();
+				GameEvents.OnGameDatabaseLoaded.Add(LoadIcons);
+			}
 		}
 
 		// reads trait icon settings from config file
@@ -32,6 +35,7 @@ namespace CommunityTraitIcons
 
 			ExperienceSystemConfig esc = GameDatabase.Instance.ExperienceConfigs;
 
+			traitSettings.Clear();
 			ConfigNode node = GameDatabase.Instance.GetConfigNode("CommunityTraitIcons/CommunityTraitIcons/CommunityTraitIcons");
 			if (node != null)
 			{
